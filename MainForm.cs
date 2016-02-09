@@ -36,9 +36,10 @@ namespace SepaWritter
 		}
 		void Button1Click(object sender, EventArgs e) {
 			try {
-				if(openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+				if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
 					connectionOleDb(openFileDialog1.FileName);
 				}
+				//DataGrid update...
 				UpdateDataGrid();
 			}
 			catch {
@@ -50,35 +51,41 @@ namespace SepaWritter
 
 			string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filename + ";Extended Properties=\"Excel 8.0\";";
 
-			var connection = new OleDbConnection(connectionString);
+			var connection 			= new OleDbConnection(connectionString);
 			connection.Open();
 
-			var command = new OleDbCommand();
-			command.Connection = connection;
+			var command 			= new OleDbCommand();
+			command.Connection 		= connection;
 
-			string sheetName = GetSheetName(connection);
+			//Get the sheet name of the excel file
+			string sheetName 		= GetSheetName(connection);
 
-			command.CommandText = "SELECT * FROM ["+sheetName+"]";
+			command.CommandText 	= "SELECT * FROM ["+sheetName+"]";
 
-			var dt = new DataTable();
-			dt.TableName = sheetName;
+			var dt 					= new DataTable();
+			dt.TableName 			= sheetName;
 
-			var da = new OleDbDataAdapter(command);
+			var da 					= new OleDbDataAdapter(command);
 			da.Fill(dt);
 			
 			ds.Tables.Add(dt);
 			
-	        command = null;
+	        command 				= null;
 	        connection.Close();
 	        /*
-	         * Probleme : Si le fichier excel ne contient pas d'entete, il bouffe la premiere ligne
+	         * Problem : if the file do not contain entete(?), the first line will be not include
 	         */
 		}
-		
+		/*
+		 * Update Data grid
+		 */
 		void UpdateDataGrid() {
 			dataGridView1.DataSource = ds.Tables[0];
 		}
 		
+		/*
+		 * Get the sheet name of the excel file
+		 */
 		string GetSheetName(OleDbConnection connection) {
 
 	        DataTable dtSheet = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
@@ -87,6 +94,7 @@ namespace SepaWritter
 	        foreach (DataRow dr in dtSheet.Rows) {
 	        	sheetName = dr["TABLE_NAME"].ToString();
 	        	
+	        	//Sheet name always finish by $ but it's invisible for user
 	        	if (!sheetName.EndsWith("$")) {
 	        		continue;
 	        	}
@@ -100,7 +108,8 @@ namespace SepaWritter
 	        double total 			= 0;
 	        int i 					= 1;
 	        DateTime dateVirement 	= dateTimePicker1.Value;
-	        
+	        	
+	        //Get the number of row on sheet
 	        foreach (DataRow row in ds.Tables[0].Rows) {
 	        	if (row[6].ToString().Length == 0) {
 	        		continue;
@@ -108,35 +117,44 @@ namespace SepaWritter
 	        	total += Convert.ToDouble(row[6].ToString());
 	        }
 			
-	        //Il faut ajouter 1 pour que le compte tombe juste. Les banques ne commencent pas les list a 0...
-	        monSepa 		= new Sepa(ds.Tables[0].Rows.Count+1, dateVirement);
-	        monSepa.msgId 	= "On sen fou";
-	        monSepa.montantTotal = total.ToString();
+	        //Bank get start at 1, not at 0
+	        monSepa 				= new Sepa(dateVirement);
 
+	        monSepa.msgId 			= string.IsNullOrEmpty(textBox1.Text)?"Aucun libellé":textBox1.Text;
+	        monSepa.montantTotal 	= total.ToString().Replace(',', '.');
+	        monSepa.controlBank 	= checkBox1.Checked;
+	        monSepa.nomClient 		= string.IsNullOrEmpty(textBox2.Text)?"Aucun nom":textBox2.Text;
+
+	        monSepa.Initialisation(ds.Tables[0].Rows.Count+1);
+	        
 	        foreach (DataRow row in ds.Tables[0].Rows) {
-	        	foreach(DataColumn column in ds.Tables[0].Columns) {
 
-	        		monSepa.ibanDebiteur 	= row[7].ToString();
-	        		monSepa.iban 			= row[4].ToString();
-	        		monSepa.bicDebiteur 	= row[8].ToString();
-	        		monSepa.SetMontant(row[6].ToString());
-	        		monSepa.bic 			= row[5].ToString();
 	        		monSepa.matricule 		= row[1].ToString();
 	        		monSepa.nomSalarie 		= row[2].ToString().Trim()+' '+row[3].ToString().Trim();
-
-	        		monSepa.GetEmetteur(i);
-	        		monSepa.GetRecepteur();
+	        		monSepa.iban 			= row[4].ToString();
+	        		monSepa.bic 			= row[5].ToString();
+	        		monSepa.ibanDebiteur 	= row[7].ToString();
+	        		monSepa.bicDebiteur 	= row[8].ToString();
+	        		monSepa.SetMontant(row[6].ToString());
 	        		
-	        	}
-
-	        	monSepa.SetControlToFalse();
+					monSepa.GetEmetteur(i);
+	        		monSepa.GetRecepteur();
+		        	monSepa.SetControlToFalse();
+	        		
+		        	if (checkBox1.Checked) {
+		        		monSepa.CloseEmetteur();
+		        	}
+	        		i++;
+	        }
+	        
+	        if (!checkBox1.Checked) {
 	        	monSepa.CloseEmetteur();
-	        	i++;
 	        }
 	        monSepa.EndEmetteur();
 		}
 
 		void Button3Click(object sender, EventArgs e) {
+			//if no excel fil loaded...
 	        if (ds.Tables.Count == 0 ) {
 	        	return;
 	        }
@@ -149,13 +167,15 @@ namespace SepaWritter
 		    System.IO.Stream myStream;
 		    
 		    if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
+
 		        if ((myStream = saveFileDialog1.OpenFile()) != null) {
-					// Write the string to a file.
+
 					System.IO.StreamWriter file = new System.IO.StreamWriter(myStream);
 					file.WriteLine(monSepa.xmlcode);
 					file.Close();
 			        myStream.Close();
-		        }
+		        
+		    	}
 		     	else {
 		     		MessageBox.Show("Erreur! Impossible d'enregistrer le fichier", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		     	}

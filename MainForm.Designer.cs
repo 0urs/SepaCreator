@@ -36,6 +36,11 @@ namespace SepaWritter
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label label12;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -79,7 +84,12 @@ namespace SepaWritter
 			this.label5 = new System.Windows.Forms.Label();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.label11 = new System.Windows.Forms.Label();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -100,9 +110,9 @@ namespace SepaWritter
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(906, 197);
+			this.button1.Location = new System.Drawing.Point(906, 283);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(131, 23);
+			this.button1.Size = new System.Drawing.Size(129, 23);
 			this.button1.TabIndex = 1;
 			this.button1.Text = "Ouvrir un document";
 			this.button1.UseVisualStyleBackColor = true;
@@ -114,14 +124,14 @@ namespace SepaWritter
 			// 
 			// dateTimePicker1
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(881, 345);
+			this.dateTimePicker1.Location = new System.Drawing.Point(881, 471);
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(182, 20);
 			this.dateTimePicker1.TabIndex = 3;
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(906, 463);
+			this.button3.Location = new System.Drawing.Point(906, 562);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(129, 23);
 			this.button3.TabIndex = 4;
@@ -131,24 +141,24 @@ namespace SepaWritter
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(881, 253);
+			this.textBox1.Location = new System.Drawing.Point(881, 365);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(182, 20);
 			this.textBox1.TabIndex = 5;
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(896, 276);
+			this.label1.Location = new System.Drawing.Point(881, 351);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(173, 23);
+			this.label1.Size = new System.Drawing.Size(182, 23);
 			this.label1.TabIndex = 6;
-			this.label1.Text = "Correspond au libellé du virement";
+			this.label1.Text = "Libellé du virement";
 			// 
 			// label2
 			// 
-			this.label2.Location = new System.Drawing.Point(881, 368);
+			this.label2.Location = new System.Drawing.Point(15, 195);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(182, 47);
+			this.label2.Size = new System.Drawing.Size(261, 47);
 			this.label2.TabIndex = 7;
 			this.label2.Text = "Si aucune date n\'est selectionnée, celle d\'aujourd\'hui sera mise par défaut";
 			// 
@@ -171,7 +181,7 @@ namespace SepaWritter
 			// button2
 			// 
 			this.button2.BackColor = System.Drawing.Color.GreenYellow;
-			this.button2.Location = new System.Drawing.Point(277, 134);
+			this.button2.Location = new System.Drawing.Point(277, 195);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(27, 23);
 			this.button2.TabIndex = 10;
@@ -181,6 +191,8 @@ namespace SepaWritter
 			// panel1
 			// 
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.Controls.Add(this.label13);
+			this.panel1.Controls.Add(this.label12);
 			this.panel1.Controls.Add(this.label10);
 			this.panel1.Controls.Add(this.label9);
 			this.panel1.Controls.Add(this.button2);
@@ -188,11 +200,12 @@ namespace SepaWritter
 			this.panel1.Controls.Add(this.label8);
 			this.panel1.Controls.Add(this.label6);
 			this.panel1.Controls.Add(this.label5);
+			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label3);
 			this.panel1.Controls.Add(this.label4);
 			this.panel1.Location = new System.Drawing.Point(821, 6);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(309, 164);
+			this.panel1.Size = new System.Drawing.Size(309, 271);
 			this.panel1.TabIndex = 12;
 			// 
 			// label10
@@ -260,11 +273,13 @@ namespace SepaWritter
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.label11);
+			this.tabPage1.Controls.Add(this.textBox2);
+			this.tabPage1.Controls.Add(this.checkBox1);
 			this.tabPage1.Controls.Add(this.panel1);
 			this.tabPage1.Controls.Add(this.dataGridView1);
 			this.tabPage1.Controls.Add(this.button1);
 			this.tabPage1.Controls.Add(this.button3);
-			this.tabPage1.Controls.Add(this.label2);
 			this.tabPage1.Controls.Add(this.textBox1);
 			this.tabPage1.Controls.Add(this.label1);
 			this.tabPage1.Controls.Add(this.dateTimePicker1);
@@ -276,6 +291,30 @@ namespace SepaWritter
 			this.tabPage1.Text = "Sepa";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
+			// label11
+			// 
+			this.label11.Location = new System.Drawing.Point(881, 407);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(182, 14);
+			this.label11.TabIndex = 15;
+			this.label11.Text = "Nom du client";
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(881, 424);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(182, 20);
+			this.textBox2.TabIndex = 14;
+			// 
+			// checkBox1
+			// 
+			this.checkBox1.Location = new System.Drawing.Point(906, 510);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(129, 23);
+			this.checkBox1.TabIndex = 13;
+			this.checkBox1.Text = "Multi-banque";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			// 
 			// tabPage2
 			// 
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -286,12 +325,30 @@ namespace SepaWritter
 			this.tabPage2.Text = "Fichier";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
+			// label12
+			// 
+			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label12.Location = new System.Drawing.Point(3, 172);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(100, 23);
+			this.label12.TabIndex = 16;
+			this.label12.Text = "Remarque :";
+			// 
+			// label13
+			// 
+			this.label13.Location = new System.Drawing.Point(15, 232);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(289, 23);
+			this.label13.TabIndex = 17;
+			this.label13.Text = "Si vous avez un problème, cliquez sur le bouton vert à coté";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1168, 649);
 			this.Controls.Add(this.tabControl1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "MainForm";
 			this.Text = "SepaWritter";
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
