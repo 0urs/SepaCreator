@@ -45,36 +45,37 @@ namespace SepaWritter
 		public string ibanDebiteur { get; set; }
 		public string bicDebiteur { get; set; }
 		
-		public Sepa(int nbLignes) {
-			//On initialise les variables de bases et on configure les parametres
-			Initialisation();
-			this.GetGroupHeader(nbLignes);
-		}
+		public bool controlBank { get; set; }
+
 		
-		public Sepa(int nbLignes, DateTime dV) {
-			Initialisation();
+		public Sepa(DateTime dV) {
 			dateVirement = dateVirementFormat(dV);
-			this.GetGroupHeader(nbLignes);
 		}
 		
-		void Initialisation() {
+		public void Initialisation(int nbLignes) {
 			xmlcode = "";
 			SetPrologue();
 			SetDTD();
-			
+			GetGroupHeader(nbLignes);
 		}
 
 		public void GetEmetteur(int i){
 			if (_isEmetteurSet) {
 				return;
 			}
-	
+			string mt = "";
+			if (controlBank) {
+				mt = montant;
+			}
+			else {
+				mt = montantTotal;
+			}
 			xmlcode += "<PmtInf>";
 			xmlcode += "<PmtInfId>"+ msgId +" /"+ i +"</PmtInfId>";
 			xmlcode += "<PmtMtd>TRF</PmtMtd>";																			//Seule la valeur "TRF" est autorisée.
 			xmlcode += "<BtchBookg>false</BtchBookg>";
 			xmlcode += "<NbOfTxs>1</NbOfTxs>";
-			xmlcode += "<CtrlSum>"+ montantTotal +"</CtrlSum>";
+			xmlcode += "<CtrlSum>"+ mt +"</CtrlSum>";
 			xmlcode += "<PmtTpInf>";
 			xmlcode += "<SvcLvl><Cd>SEPA</Cd></SvcLvl>";																	//Seule la valeur "SEPA" est autorisée.
 			xmlcode += "</PmtTpInf>";
@@ -155,12 +156,14 @@ namespace SepaWritter
 		}
 		
 		public void SetControlToFalse() {
-			_isEmetteurSet = false;
+			if (controlBank) {
+				_isEmetteurSet = false;
+			}
 			_isRecepteurSet = false;
 		}
 
 		public void SetMontant(string mt) {
-			if (String.IsNullOrEmpty(mt) || !TestMontant(mt)) {
+			if (String.IsNullOrEmpty(mt) || TestMontant(mt)==false) {
 				montant = "0.00";
 			}
 			else {
@@ -170,15 +173,10 @@ namespace SepaWritter
 
 		bool TestMontant(string mt) {
 			/*Longueur maximal de 18 caracteres separateur de décimal compris*/
-			if (mt.Length>18)
-				return false;
-	
-			if (!Regex.Match(mt, "^[0-9]{1,}\\.?[0-9]{0,5}$").Success) {
+			if (mt.Length>18) {
 				return false;
 			}
-			else {
-				//A voir si je vx traiter un truc ici
-			}
+			//Rajouter des test si necessaire
 			
 			return true;
 		}
