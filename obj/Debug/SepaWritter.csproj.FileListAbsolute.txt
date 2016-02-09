@@ -1,0 +1,8 @@
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\bin\Debug\SepaWritter.exe.config
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\bin\Debug\SepaWritter.exe
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\bin\Debug\SepaWritter.pdb
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\obj\Debug\SepaWritter.csprojResolveAssemblyReference.cache
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\obj\Debug\SepaWritter.MainForm.resources
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\obj\Debug\SepaWritter.csproj.GenerateResource.Cache
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\obj\Debug\SepaWritter.exe
+C:\Users\Ours\Documents\SharpDevelop Projects\SepaWritter\SepaWritter\obj\Debug\SepaWritter.pdb
