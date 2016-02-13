@@ -18,7 +18,7 @@ namespace SepaWritter
 	public class Sepa
 	{	
 		//Variable de controle
-		bool _isDTDSet 			= false;
+		//bool _isDTDSet 			= false;
 		bool _isGroupHeaderSet 	= false;
 		bool _isEmetteurSet 	= false;
 		bool _isRecepteurSet 	= false;
@@ -70,6 +70,7 @@ namespace SepaWritter
 			else {
 				mt = montantTotal;
 			}
+
 			xmlcode += "<PmtInf>";
 			xmlcode += "<PmtInfId>"+ msgId +" /"+ i +"</PmtInfId>";
 			xmlcode += "<PmtMtd>TRF</PmtMtd>";																			//Seule la valeur "TRF" est autorisée.
@@ -163,7 +164,7 @@ namespace SepaWritter
 		}
 
 		public void SetMontant(string mt) {
-			if (String.IsNullOrEmpty(mt) || TestMontant(mt)==false) {
+			if (String.IsNullOrEmpty(mt) || mt.Length>18) {
 				montant = "0.00";
 			}
 			else {
@@ -171,14 +172,17 @@ namespace SepaWritter
 			}
 		}
 
-		bool TestMontant(string mt) {
-			/*Longueur maximal de 18 caracteres separateur de décimal compris*/
-			if (mt.Length>18) {
-				return false;
+		public bool MontantIsDecimal(string mt) {
+
+			double temp 			= 0;
+			bool montantIsDecimal 	= double.TryParse(mt, out temp);
+			
+			if (montantIsDecimal) {
+				return true;
 			}
 			//Rajouter des test si necessaire
 			
-			return true;
+			return false;
 		}
 	}
 }
