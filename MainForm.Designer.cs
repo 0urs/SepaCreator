@@ -41,6 +41,24 @@ namespace SepaWritter
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.RadioButton radioButton3;
+		private System.Windows.Forms.RadioButton radioButton2;
+		private System.Windows.Forms.RadioButton radioButton1;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.DataGridView dataGridView2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMatricule;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNom;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrenom;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIbanDebiteur;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBicDebiteur;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMontant;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIban;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBicCrediteur;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.Label label15;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -76,6 +94,8 @@ namespace SepaWritter
 			this.label4 = new System.Windows.Forms.Label();
 			this.button2 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
@@ -84,16 +104,35 @@ namespace SepaWritter
 			this.label5 = new System.Windows.Forms.Label();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.label14 = new System.Windows.Forms.Label();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.label15 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
+			this.dataGridView2 = new System.Windows.Forms.DataGridView();
+			this.ColumnMatricule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnPrenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnIbanDebiteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnBicDebiteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnMontant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnIban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnBicCrediteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.button5 = new System.Windows.Forms.Button();
+			this.button4 = new System.Windows.Forms.Button();
+			this.radioButton3 = new System.Windows.Forms.RadioButton();
+			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.panel2 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
+			this.panel3.SuspendLayout();
+			this.tabPage2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
@@ -124,9 +163,10 @@ namespace SepaWritter
 			// 
 			// dateTimePicker1
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(881, 471);
+			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePicker1.Location = new System.Drawing.Point(1013, 456);
 			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(182, 20);
+			this.dateTimePicker1.Size = new System.Drawing.Size(95, 20);
 			this.dateTimePicker1.TabIndex = 3;
 			// 
 			// button3
@@ -208,6 +248,23 @@ namespace SepaWritter
 			this.panel1.Size = new System.Drawing.Size(309, 271);
 			this.panel1.TabIndex = 12;
 			// 
+			// label13
+			// 
+			this.label13.Location = new System.Drawing.Point(15, 232);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(289, 23);
+			this.label13.TabIndex = 17;
+			this.label13.Text = "Si vous avez un problème, cliquez sur le bouton vert à coté";
+			// 
+			// label12
+			// 
+			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label12.Location = new System.Drawing.Point(3, 172);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(100, 23);
+			this.label12.TabIndex = 16;
+			this.label12.Text = "Remarque :";
+			// 
 			// label10
 			// 
 			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -273,6 +330,8 @@ namespace SepaWritter
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.label14);
+			this.tabPage1.Controls.Add(this.panel3);
 			this.tabPage1.Controls.Add(this.label11);
 			this.tabPage1.Controls.Add(this.textBox2);
 			this.tabPage1.Controls.Add(this.checkBox1);
@@ -291,9 +350,35 @@ namespace SepaWritter
 			this.tabPage1.Text = "Sepa";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
+			// label14
+			// 
+			this.label14.Location = new System.Drawing.Point(858, 456);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(100, 14);
+			this.label14.TabIndex = 17;
+			this.label14.Text = "Montant Total :";
+			// 
+			// panel3
+			// 
+			this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel3.Controls.Add(this.label15);
+			this.panel3.Location = new System.Drawing.Point(858, 473);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(111, 46);
+			this.panel3.TabIndex = 16;
+			// 
+			// label15
+			// 
+			this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label15.Location = new System.Drawing.Point(3, 6);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(105, 33);
+			this.label15.TabIndex = 0;
+			this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// label11
 			// 
-			this.label11.Location = new System.Drawing.Point(881, 407);
+			this.label11.Location = new System.Drawing.Point(881, 388);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(182, 14);
 			this.label11.TabIndex = 15;
@@ -301,22 +386,29 @@ namespace SepaWritter
 			// 
 			// textBox2
 			// 
-			this.textBox2.Location = new System.Drawing.Point(881, 424);
+			this.textBox2.Location = new System.Drawing.Point(881, 405);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(182, 20);
 			this.textBox2.TabIndex = 14;
 			// 
 			// checkBox1
 			// 
-			this.checkBox1.Location = new System.Drawing.Point(906, 510);
+			this.checkBox1.Location = new System.Drawing.Point(1013, 482);
 			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(129, 23);
+			this.checkBox1.Size = new System.Drawing.Size(95, 32);
 			this.checkBox1.TabIndex = 13;
 			this.checkBox1.Text = "Multi-banque";
 			this.checkBox1.UseVisualStyleBackColor = true;
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.dataGridView2);
+			this.tabPage2.Controls.Add(this.button5);
+			this.tabPage2.Controls.Add(this.button4);
+			this.tabPage2.Controls.Add(this.radioButton3);
+			this.tabPage2.Controls.Add(this.radioButton2);
+			this.tabPage2.Controls.Add(this.radioButton1);
+			this.tabPage2.Controls.Add(this.panel2);
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -325,22 +417,118 @@ namespace SepaWritter
 			this.tabPage2.Text = "Fichier";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// label12
+			// dataGridView2
 			// 
-			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label12.Location = new System.Drawing.Point(3, 172);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(100, 23);
-			this.label12.TabIndex = 16;
-			this.label12.Text = "Remarque :";
+			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.ColumnMatricule,
+			this.ColumnNom,
+			this.ColumnPrenom,
+			this.ColumnIbanDebiteur,
+			this.ColumnBicDebiteur,
+			this.ColumnMontant,
+			this.ColumnIban,
+			this.ColumnBicCrediteur});
+			this.dataGridView2.Location = new System.Drawing.Point(6, 6);
+			this.dataGridView2.Name = "dataGridView2";
+			this.dataGridView2.Size = new System.Drawing.Size(845, 597);
+			this.dataGridView2.TabIndex = 6;
 			// 
-			// label13
+			// ColumnMatricule
 			// 
-			this.label13.Location = new System.Drawing.Point(15, 232);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(289, 23);
-			this.label13.TabIndex = 17;
-			this.label13.Text = "Si vous avez un problème, cliquez sur le bouton vert à coté";
+			this.ColumnMatricule.HeaderText = "Matricule";
+			this.ColumnMatricule.Name = "ColumnMatricule";
+			// 
+			// ColumnNom
+			// 
+			this.ColumnNom.HeaderText = "Nom";
+			this.ColumnNom.Name = "ColumnNom";
+			// 
+			// ColumnPrenom
+			// 
+			this.ColumnPrenom.HeaderText = "Prénom";
+			this.ColumnPrenom.Name = "ColumnPrenom";
+			// 
+			// ColumnIbanDebiteur
+			// 
+			this.ColumnIbanDebiteur.HeaderText = "IBAN débiteur";
+			this.ColumnIbanDebiteur.Name = "ColumnIbanDebiteur";
+			// 
+			// ColumnBicDebiteur
+			// 
+			this.ColumnBicDebiteur.HeaderText = "BIC débiteur";
+			this.ColumnBicDebiteur.Name = "ColumnBicDebiteur";
+			// 
+			// ColumnMontant
+			// 
+			this.ColumnMontant.HeaderText = "Montant";
+			this.ColumnMontant.Name = "ColumnMontant";
+			// 
+			// ColumnIban
+			// 
+			this.ColumnIban.HeaderText = "IBAN créditeur";
+			this.ColumnIban.Name = "ColumnIban";
+			// 
+			// ColumnBicCrediteur
+			// 
+			this.ColumnBicCrediteur.HeaderText = "BIC créditeur";
+			this.ColumnBicCrediteur.Name = "ColumnBicCrediteur";
+			// 
+			// button5
+			// 
+			this.button5.Location = new System.Drawing.Point(995, 188);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(75, 23);
+			this.button5.TabIndex = 5;
+			this.button5.Text = "button5";
+			this.button5.UseVisualStyleBackColor = true;
+			// 
+			// button4
+			// 
+			this.button4.Location = new System.Drawing.Point(896, 188);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(75, 23);
+			this.button4.TabIndex = 4;
+			this.button4.Text = "button4";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.Button4Click);
+			// 
+			// radioButton3
+			// 
+			this.radioButton3.Location = new System.Drawing.Point(896, 277);
+			this.radioButton3.Name = "radioButton3";
+			this.radioButton3.Size = new System.Drawing.Size(104, 24);
+			this.radioButton3.TabIndex = 3;
+			this.radioButton3.TabStop = true;
+			this.radioButton3.Text = "radioButton3";
+			this.radioButton3.UseVisualStyleBackColor = true;
+			// 
+			// radioButton2
+			// 
+			this.radioButton2.Location = new System.Drawing.Point(896, 247);
+			this.radioButton2.Name = "radioButton2";
+			this.radioButton2.Size = new System.Drawing.Size(104, 24);
+			this.radioButton2.TabIndex = 2;
+			this.radioButton2.TabStop = true;
+			this.radioButton2.Text = "radioButton2";
+			this.radioButton2.UseVisualStyleBackColor = true;
+			// 
+			// radioButton1
+			// 
+			this.radioButton1.Location = new System.Drawing.Point(896, 217);
+			this.radioButton1.Name = "radioButton1";
+			this.radioButton1.Size = new System.Drawing.Size(104, 24);
+			this.radioButton1.TabIndex = 1;
+			this.radioButton1.TabStop = true;
+			this.radioButton1.Text = "radioButton1";
+			this.radioButton1.UseVisualStyleBackColor = true;
+			// 
+			// panel2
+			// 
+			this.panel2.Location = new System.Drawing.Point(869, 6);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(261, 160);
+			this.panel2.TabIndex = 0;
 			// 
 			// MainForm
 			// 
@@ -356,6 +544,9 @@ namespace SepaWritter
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
+			this.panel3.ResumeLayout(false);
+			this.tabPage2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
 			this.ResumeLayout(false);
 
 		}
