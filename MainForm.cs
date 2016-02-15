@@ -7,11 +7,8 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
-using System.Data.OleDb;
 
 namespace SepaWritter
 {
@@ -20,21 +17,14 @@ namespace SepaWritter
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		Sepa monSepa;
-		DataSet ds = new DataSet();
-		double total = 0;
+		sepadll.Sepa monSepa;
+		DataSet ds 		= new DataSet();
+		double total 	= 0;
 
-		public MainForm()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
+		public MainForm() {
 			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
 		}
+
 		void Button1Click(object sender, EventArgs e) {
 			try {
 				if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
@@ -66,7 +56,7 @@ namespace SepaWritter
 	        DateTime dateVirement 	= dateTimePicker1.Value;
 	        UpdateLabelMontant();
 	        //Bank get start at 1, not at 0
-	        monSepa 				= new Sepa(dateVirement);
+	        monSepa 				= new sepadll.Sepa(dateVirement);
 
 	        monSepa.msgId 			= string.IsNullOrEmpty(textBox1.Text)?"Aucun libellé":textBox1.Text;
 	        monSepa.montantTotal 	= total.ToString().Replace(',', '.');
@@ -130,7 +120,7 @@ namespace SepaWritter
 		     	else {
 		     		MessageBox.Show("Erreur! Impossible d'enregistrer le fichier", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		     	}
-		     }		
+		     }
 		}
 		
 		/*
@@ -165,9 +155,11 @@ namespace SepaWritter
 				
 				dt.Rows.Add(dr);
             }
-            da.Tables.Add(dat);
+            
+			da.Tables.Add(dt);
+            
 			var workbook = new ExcelLibrary.SpreadSheet.Workbook();
-			ExcelLibrary.DataSetHelper.CreateWorkbook("VIRe.xls", da);
+			ExcelLibrary.DataSetHelper.CreateWorkbook("Feuille_compta.xls", da);		        
 		}
 	}
 }

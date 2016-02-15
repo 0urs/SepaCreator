@@ -41,11 +41,7 @@ namespace SepaWritter
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.RadioButton radioButton3;
-		private System.Windows.Forms.RadioButton radioButton2;
-		private System.Windows.Forms.RadioButton radioButton1;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.DataGridView dataGridView2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMatricule;
@@ -120,11 +116,7 @@ namespace SepaWritter
 			this.ColumnMontant = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColumnIban = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColumnBicCrediteur = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.button5 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
-			this.radioButton3 = new System.Windows.Forms.RadioButton();
-			this.radioButton2 = new System.Windows.Forms.RadioButton();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.panel2 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -403,11 +395,7 @@ namespace SepaWritter
 			// tabPage2
 			// 
 			this.tabPage2.Controls.Add(this.dataGridView2);
-			this.tabPage2.Controls.Add(this.button5);
 			this.tabPage2.Controls.Add(this.button4);
-			this.tabPage2.Controls.Add(this.radioButton3);
-			this.tabPage2.Controls.Add(this.radioButton2);
-			this.tabPage2.Controls.Add(this.radioButton1);
 			this.tabPage2.Controls.Add(this.panel2);
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
@@ -474,54 +462,15 @@ namespace SepaWritter
 			this.ColumnBicCrediteur.HeaderText = "BIC créditeur";
 			this.ColumnBicCrediteur.Name = "ColumnBicCrediteur";
 			// 
-			// button5
-			// 
-			this.button5.Location = new System.Drawing.Point(995, 188);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(75, 23);
-			this.button5.TabIndex = 5;
-			this.button5.Text = "button5";
-			this.button5.UseVisualStyleBackColor = true;
-			// 
 			// button4
 			// 
-			this.button4.Location = new System.Drawing.Point(896, 188);
+			this.button4.Location = new System.Drawing.Point(947, 236);
 			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(75, 23);
+			this.button4.Size = new System.Drawing.Size(105, 23);
 			this.button4.TabIndex = 4;
-			this.button4.Text = "button4";
+			this.button4.Text = "Enregistrer";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.Button4Click);
-			// 
-			// radioButton3
-			// 
-			this.radioButton3.Location = new System.Drawing.Point(896, 277);
-			this.radioButton3.Name = "radioButton3";
-			this.radioButton3.Size = new System.Drawing.Size(104, 24);
-			this.radioButton3.TabIndex = 3;
-			this.radioButton3.TabStop = true;
-			this.radioButton3.Text = "radioButton3";
-			this.radioButton3.UseVisualStyleBackColor = true;
-			// 
-			// radioButton2
-			// 
-			this.radioButton2.Location = new System.Drawing.Point(896, 247);
-			this.radioButton2.Name = "radioButton2";
-			this.radioButton2.Size = new System.Drawing.Size(104, 24);
-			this.radioButton2.TabIndex = 2;
-			this.radioButton2.TabStop = true;
-			this.radioButton2.Text = "radioButton2";
-			this.radioButton2.UseVisualStyleBackColor = true;
-			// 
-			// radioButton1
-			// 
-			this.radioButton1.Location = new System.Drawing.Point(896, 217);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(104, 24);
-			this.radioButton1.TabIndex = 1;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "radioButton1";
-			this.radioButton1.UseVisualStyleBackColor = true;
 			// 
 			// panel2
 			// 
